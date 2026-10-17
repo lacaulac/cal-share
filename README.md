@@ -117,7 +117,7 @@ docker build -t cal-share .
 
 # Run container with persistent calendar storage volume
 docker run -d \
-  -p 16553:8080 \
+  -p 8080:8080 \
   -e JWT_SECRET="your-strong-production-secret" \
   -v $(pwd)/data/calendars:/app/data/calendars \
   --name cal-share \
