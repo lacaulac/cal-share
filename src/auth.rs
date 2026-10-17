@@ -96,8 +96,8 @@ impl FromRequestParts<AppState> for AuthClaims {
             return Err(AuthError::MissingHeader);
         }
 
-        let claims = verify_token(&state.inner.jwt_secret, token).unwrap();
-        // .map_err(|_| AuthError::InvalidToken)?;
+        let claims =
+            verify_token(&state.inner.jwt_secret, token).map_err(|_| AuthError::InvalidToken)?;
 
         // Ensure sub claim contains a safe identifier
         AppState::sanitize_identifier(&claims.sub)
