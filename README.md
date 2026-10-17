@@ -85,23 +85,6 @@ END:VCALENDAR
 
 ---
 
-## Python Integration Example
-
-A standalone Python client is provided in `examples/upload_client.py`:
-
-```python
-from examples.upload_client import ICalClient
-
-# Initialize client with your server URL and non-expiring JWT
-client = ICalClient("http://localhost:8080", token="<YOUR_JWT_TOKEN>")
-
-# Upload your local .ics file (replaces previous file on server)
-response = client.upload_file("path/to/calendar.ics")
-print(f"Uploaded {response['identifier']} successfully!")
-```
-
----
-
 ## Running the Rust Service
 
 ### Prerequisites
