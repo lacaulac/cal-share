@@ -28,8 +28,11 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set image tag
+      run: echo "IMAGE_TAG=$(date +%Y%m%d%H%M)" >> "$GITHUB_ENV"
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(date +%Y%m%d%H%M)
+      run: docker build . --file Dockerfile --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
     - name: Push the Docker image
-      run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(date +%Y%m%d%H%M)
+      run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
