@@ -1,0 +1,19 @@
+[package]
+name = "cal-share"
+version = "0.1.0"
+edition = "2021"
+authors = ["\"lacaulac\""]
+description = "A lightweight high-performance Axum & Tokio web API for iCalendar file management with non-expiring JWT authentication."
+
+[dependencies]
+axum = { version = "0.8", features = ["macros"] }
+tokio = { version = "1.43", features = ["full"] }
+tower = { version = "0.5", features = ["util"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+jsonwebtoken = "9.3"
+dotenvy = "0.15"
+tempfile = "3.17"
